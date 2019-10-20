@@ -136,7 +136,7 @@ yarn run build
 echo ''
 echo 'Copying...'
 mkdir -p $APP_PATH/ui
-mkdir -p $APP_PATH/ui/node_modules/picnic
+mkdir -p $APP_PATH/ui/picnic
 
 cp $REPO_PATH/ui/package.json $APP_PATH/ui
 cp $REPO_PATH/ui/index.html   $APP_PATH/ui

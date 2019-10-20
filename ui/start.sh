@@ -25,3 +25,5 @@ else
 
   chromium-browser --app=http://localhost:8081/
 fi
+
+sleep 1000000

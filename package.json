@@ -1,6 +1,6 @@
 {
     "name": "edublocks",
-    "version": "0.0.5-connect",
+    "version": "0.0.5-desktop",
     "description": "EduBlocks is a visual block based programming tool",
     "main": "index.js",
     "scripts": {

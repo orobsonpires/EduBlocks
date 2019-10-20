@@ -4,20 +4,20 @@ set -e -o pipefail
 
 # Setup and start Sauce Connect for your TravisCI build
 CONNECT_URL="https://saucelabs.com/downloads/sc-4.3.12-linux.tar.gz"
-CONNECT_DIR="/tmp/sauce-connect-$RANDOM"
+CONNECT_DIR="/tmp/sauce-desktop-$RANDOM"
 CONNECT_DOWNLOAD="sc-latest-linux.tar.gz"
 
-BROWSER_PROVIDER_READY_FILE="/tmp/sauce-connect-ready"
-CONNECT_LOG="/tmp/sauce-connect"
-CONNECT_STDOUT="/tmp/sauce-connect.stdout"
-CONNECT_STDERR="/tmp/sauce-connect.stderr"
+BROWSER_PROVIDER_READY_FILE="/tmp/sauce-desktop-ready"
+CONNECT_LOG="/tmp/sauce-desktop"
+CONNECT_STDOUT="/tmp/sauce-desktop.stdout"
+CONNECT_STDERR="/tmp/sauce-desktop.stderr"
 
 # Get Connect and start it
 mkdir -p $CONNECT_DIR
 cd $CONNECT_DIR
 curl $CONNECT_URL -o $CONNECT_DOWNLOAD 2> /dev/null 1> /dev/null
-mkdir sauce-connect
-tar --extract --file=$CONNECT_DOWNLOAD --strip-components=1 --directory=sauce-connect > /dev/null
+mkdir sauce-desktop
+tar --extract --file=$CONNECT_DOWNLOAD --strip-components=1 --directory=sauce-desktop > /dev/null
 rm $CONNECT_DOWNLOAD
 
 SAUCE_ACCESS_KEY=`echo $SAUCE_ACCESS_KEY | rev`
@@ -38,7 +38,7 @@ echo "  $CONNECT_LOG"
 echo "  $CONNECT_STDOUT"
 echo "  $CONNECT_STDERR"
 # -B java.com helps to disable Java update popups in IE.
-sauce-connect/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY $ARGS \
+sauce-desktop/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY $ARGS \
   --logfile $CONNECT_LOG -B java.com &
 
 # Wait for Connect to be ready before exiting

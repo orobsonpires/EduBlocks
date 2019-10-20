@@ -35,11 +35,11 @@ tar -xf edublocks-$ARCH.tar.xz
 
 echo ''
 echo 'Running install dependencies script...'
-~/edublocks/install-deps-connect.sh
+~/edublocks/install-deps-desktop.sh
 
 echo ''
 echo 'Running install script...'
-~/edublocks/install-connect.sh
+~/edublocks/install-desktop.sh
 
 if [ -f edublocks-$ARCH.tar.xz ]; then
   echo ''

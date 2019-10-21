@@ -49,7 +49,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('from sense_hat import SenseHat');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#E55F2B");
+      this.setColour("#ff0066");
       this.setTooltip('Imports the Sense Hat library');
       this.setHelpUrl('');
     },
@@ -61,7 +61,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('from sense_emu import SenseHat');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#E55F2B");
+      this.setColour("#ff0066");
       this.setTooltip('Imports the Sense Hat Emulator library');
       this.setHelpUrl('');
     },

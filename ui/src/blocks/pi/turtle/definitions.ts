@@ -5,7 +5,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField("from turtle import *");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#7289DA");
+      this.setColour("#ff0066");
       this.setTooltip("Import Turtle library");
       this.setHelpUrl("");
     }

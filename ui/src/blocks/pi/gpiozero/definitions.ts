@@ -5,7 +5,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('from gpiozero import *');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#E4E436");
+      this.setColour("#ff0066");
       this.setTooltip('Import the gpiozero library');
       this.setHelpUrl('http://gpiozero.readthedocs.io');
     },
@@ -17,7 +17,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('from datetime import time');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#E4E436");
+      this.setColour("#ff0066");
       this.setTooltip('Import the datetime library');
       this.setHelpUrl('http://gpiozero.readthedocs.io');
     },

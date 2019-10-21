@@ -1,13 +1,7 @@
 <category name="Minecraft" colour="#19E32E" iconclass="blocklyTreeIconCustom minecraft">
-  <category name="General" colour="#7D21E1">
-    <block type="mcimport"></block>
-    <block type="import_block"></block>
-    <block type="mcpiblockas"></block>
     <block type="mccreate"></block>
-  </category>
-  <category name="Commands" colour="#19E32E">
     <block type="mcpost">
-      <value name="text">
+      <value name="text"> 
         <shadow type="stringinline">
           <field name="text">Hello World</field>
         </shadow>
@@ -262,5 +256,4 @@
         </shadow>
       </value>
     </block>
-  </category>
 </category>

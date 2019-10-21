@@ -6,7 +6,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
       this.setPreviousStatement(true, null);
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#7D21E1");
+      this.setColour("#ff0066");
       this.setTooltip('Use this to import minecraft.');
       this.setHelpUrl('http://www.example.com/');
     },
@@ -18,7 +18,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('mc = Minecraft.create()');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#7D21E1");
+      this.setColour("#19E32E");
       this.setTooltip('Use this to connect to minecraft. ALWAYS REQUIRED.');
       this.setHelpUrl('http://www.example.com/');
     },
@@ -30,7 +30,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('from mcpi import block');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#7D21E1");
+      this.setColour("#ff0066");
       this.setTooltip('Imports the mcpi block library.');
       this.setHelpUrl('http://www.example.com/');
     },
@@ -599,7 +599,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('import mcpi.block as block');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#7D21E1");
+      this.setColour("#ff0066");
       this.setTooltip('Imports the Minecraft Block Library');
       this.setHelpUrl('');
     },

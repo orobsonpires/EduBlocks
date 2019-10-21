@@ -1,5 +1,4 @@
 <category name="BitIO" colour="#C227E2" iconclass="blocklyTreeIconCustom bitio">
-  <block type="importmb"></block>
   <block type="displayscrolltext">
     <value name="text">
       <shadow type="textinline">

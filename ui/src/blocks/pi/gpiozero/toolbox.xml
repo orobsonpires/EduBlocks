@@ -1,8 +1,4 @@
 <category name="gpiozero" colour="#E4E436" iconclass="blocklyTreeIconCustom gpio">
-  <category name="General" colour="#E4E436">
-    <block type="importgpiozero"></block>
-    <block type="importtime"></block>
-  </category>
   <category name="Inputs" colour="#16AEE5">
     <category name="Button" colour="#16AEE5">
       <block type="buttonset">

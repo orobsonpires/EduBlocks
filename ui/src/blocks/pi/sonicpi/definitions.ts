@@ -5,7 +5,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField('from psonic import *');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour(180);
+      this.setColour("#ff0066");
       this.setTooltip('');
       this.setHelpUrl('');
     },

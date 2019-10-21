@@ -1,5 +1,5 @@
 <category name="Turtle" colour="#7289DA" iconclass="blocklyTreeIconCustom turtle">
-    <block type="import_turtle"></block>
+
     <block type="turtle"></block>
     <block type="screeninit"></block>
     <block type="colourmode">

@@ -1,7 +1,5 @@
 <category name="Requests" colour="#C2E434" iconclass="blocklyTreeIconCustom http">
   <label text="Requests" web-class="myLabelStyle"></label>
-  <block type="import_requests"></block>
-  <block type="import_json"></block>
   <block type="requests_get">
     <value name="text">
       <shadow type="textinline">

@@ -5,7 +5,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         .appendField("import microbit");
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
-      this.setColour("#C227E2");
+      this.setColour("#ff0066");
       this.setTooltip("");
       this.setHelpUrl("");
     }

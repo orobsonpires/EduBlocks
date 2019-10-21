@@ -7,5 +7,18 @@
   <block type="random"></block>
   <block type="import_pygal"></block>
   <block type="import_processing"></block>
+  <block type="mcimport"></block>
+  <block type="import_block"></block>
+  <block type="mcpiblockas"></block>
+  <block type="importgpiozero"></block>
+  <block type="importtime"></block>
+  <block type="import_sonic"></block>
+  <block type="import_requests"></block>
+  <block type="import_json"></block>
+  <block type="senseimport"></block>
+  <block type="senseimportemu"></block>
+  <block type="import_turtle"></block>
+  <block type="importmb"></block>
+  <block type="import_picamera"></block>
 
 </category>

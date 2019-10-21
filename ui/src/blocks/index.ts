@@ -169,13 +169,49 @@ export async function getToolBoxXml(extensions: Extension[]) {
   }
 
   if (extensions.indexOf('Pi General') !== -1) {
-    (await import('./pi/basic/definitions')).default(Blockly.Blocks);
-    (await import('./pi/basic/generators')).default(Blockly.Python as any);
-    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'basic', 'toolbox.xml'));
+    (await import('./pi/imports/definitions')).default(Blockly.Blocks);
+    (await import('./pi/imports/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'imports', 'toolbox.xml'));
 
     (await import('./pi/variables/definitions')).default(Blockly.Blocks);
     (await import('./pi/variables/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'variables', 'toolbox.xml'));
+
+    (await import('./pi/statements/definitions')).default(Blockly.Blocks);
+    (await import('./pi/statements/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'statements', 'toolbox.xml'));
+
+    (await import('./pi/logic/definitions')).default(Blockly.Blocks);
+    (await import('./pi/logic/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'logic', 'toolbox.xml'));
+
+    (await import('./pi/lists/definitions')).default(Blockly.Blocks);
+    (await import('./pi/lists/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'lists', 'toolbox.xml'));
+
+    (await import('./pi/loops/definitions')).default(Blockly.Blocks);
+    (await import('./pi/loops/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'loops', 'toolbox.xml'));
+
+    (await import('./pi/definitions/definitions')).default(Blockly.Blocks);
+    (await import('./pi/definitions/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'definitions', 'toolbox.xml'));
+
+    (await import('./pi/math/definitions')).default(Blockly.Blocks);
+    (await import('./pi/math/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'math', 'toolbox.xml'));
+
+    (await import('./pi/graphs/definitions')).default(Blockly.Blocks);
+    (await import('./pi/graphs/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'graphs', 'toolbox.xml'));
+
+    (await import('./pi/random/definitions')).default(Blockly.Blocks);
+    (await import('./pi/random/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'random', 'toolbox.xml'));
+
+    (await import('./pi/processing/definitions')).default(Blockly.Blocks);
+    (await import('./pi/processing/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'pi', 'processing', 'toolbox.xml'));
 
     (await import('./pi/minecraft/definitions')).default(Blockly.Blocks);
     (await import('./pi/minecraft/generators')).default(Blockly.Python as any);

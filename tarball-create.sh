@@ -48,7 +48,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-BUNDLE_NAME="edublocks"
+BUNDLE_NAME="edublocks-desktop"
 
 BUNDLE_PATH=$REPO_PATH/$BUNDLE_NAME
 

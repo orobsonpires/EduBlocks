@@ -13,10 +13,10 @@ ARCH="armv6l"
 
 cd ~
 
-if [ -f edublocks-$ARCH.tar.xz ]; then
+if [ -f edublocks-desktop-$ARCH.tar.xz ]; then
   echo ''
   echo 'Removing old download...'
-  rm -f edublocks-$ARCH.tar.xz
+  rm -f edublocks-desktop-$ARCH.tar.xz
 fi
 
 if [ -d edublocks ]; then
@@ -27,11 +27,11 @@ fi
 
 echo ''
 echo 'Downloading package...'
-wget http://edublocks.org/downloads/desktop/edublocks-$ARCH.tar.xz
+wget http://edublocks.org/downloads/desktop/edublocks-desktop-$ARCH.tar.xz
 
 echo ''
 echo 'Extracting package...'
-tar -xf edublocks-$ARCH.tar.xz
+tar -xf edublocks-desktop-$ARCH.tar.xz
 
 echo ''
 echo 'Running install dependencies script...'
@@ -41,10 +41,10 @@ echo ''
 echo 'Running install script...'
 ~/edublocks/install-desktop.sh
 
-if [ -f edublocks-$ARCH.tar.xz ]; then
+if [ -f edublocks-desktop-$ARCH.tar.xz ]; then
   echo ''
   echo 'Removing temp download...'
-  rm -f edublocks-$ARCH.tar.xz
+  rm -f edublocks-desktop-$ARCH.tar.xz
 fi
 
 if [ -d edublocks ]; then

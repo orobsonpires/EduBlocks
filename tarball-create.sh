@@ -137,6 +137,7 @@ echo ''
 echo 'Copying...'
 mkdir -p $APP_PATH/ui
 mkdir -p $APP_PATH/ui/node_modules/picnic
+mkdir -p $APP_PATH/ui/node_modules/pxt-blockly
 
 cp $REPO_PATH/ui/package.json $APP_PATH/ui
 cp $REPO_PATH/ui/index.html   $APP_PATH/ui
@@ -144,7 +145,7 @@ cp $REPO_PATH/ui/start.sh     $APP_PATH/ui
 
 cp -r $REPO_PATH/ui/dist      $APP_PATH/ui
 cp -r $REPO_PATH/ui/lib       $APP_PATH/ui
-cp -r $REPO_PATH/ui/blockly   $APP_PATH/ui
+cp -r $REPO_PATH/ui/node_modules/pxt-blockly   $APP_PATH/ui/node_modules/pxt-blockly
 cp -r $REPO_PATH/ui/images    $APP_PATH/ui
 cp -r $REPO_PATH/ui/css       $APP_PATH/ui
 cp -r $REPO_PATH/ui/fonts     $APP_PATH/ui

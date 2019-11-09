@@ -35,11 +35,11 @@ tar -xf edublocks-desktop-$ARCH.tar.xz
 
 echo ''
 echo 'Running install dependencies script...'
-~/edublocks/install-deps-desktop.sh
+~/edublocks-desktop/install-deps-desktop.sh
 
 echo ''
 echo 'Running install script...'
-~/edublocks/install-desktop.sh
+~/edublocks-desktop/install-desktop.sh
 
 if [ -f edublocks-desktop-$ARCH.tar.xz ]; then
   echo ''
@@ -50,5 +50,5 @@ fi
 if [ -d edublocks ]; then
   echo ''
   echo 'Removing temp extract...'
-  rm -rf edublocks
+  rm -rf edublocks-desktop
 fi

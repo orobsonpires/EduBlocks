@@ -1,13 +1,19 @@
 {
     "settings": {
-        "typescript.tsdk": "ui/node_modules/typescript/lib",
+        "typescript.tsdk": "arthur/node_modules/typescript/lib",
         "editor.tabSize": 2,
         "terminal.integrated.shell.linux": "/bin/bash",
         "cSpell.words": [
+            "Unmount",
             "dapjs",
             "daplink",
+            "deserialize",
+            "edublocks",
+            "firebaseui",
             "hexlify",
-            "microbit"
+            "microbit",
+            "preact",
+            "resave"
         ]
     },
     "folders": [
@@ -16,6 +22,9 @@
         },
         {
             "path": "server"
+        },
+        {
+            "path": "arthur"
         }
     ]
 }

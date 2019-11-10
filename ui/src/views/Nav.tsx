@@ -1,8 +1,10 @@
-import React = require('preact');
-import {Component} from 'preact';
-import Auth from './Auth';
+import * as React from 'preact';
+import { Component } from 'preact';
+import { UserSession } from '../types';
 
 interface Props {
+    userSession: UserSession | null;
+
     platformImg?: string;
 
     openSamples(): void;
@@ -41,50 +43,60 @@ interface Props {
 
 export default class Nav extends Component<Props, {}> {
     public render() {
-        const {openExtensions, downloadHex, openTerminal: sendCode, downloadPython} = this.props;
+        const { openExtensions, downloadHex, openTerminal: sendCode, downloadPython } = this.props;
 
         return (
             <nav>
                 <a class='brand' onClick={() => this.props.modeQuestion()} data-tooltip='Change Mode'>
-                    {this.props.platformImg && <img src={this.props.platformImg} class='Nav__platformImg' height={50}/>}
-                    <img class='logo' src='/images/edublock-logo_Final_edublocks_white.svg'/>
+                    {this.props.platformImg && <img src={this.props.platformImg} class='Nav__platformImg' height={50} />}
+                    <img class='logo' src='/images/edublock-logo_Final_edublocks_white.svg' />
                 </a>
-                <Auth openAuth={this.props.openAuth} closeAuth={this.props.closeAuth}/>
+                {/* <Auth openAuth={this.props.openAuth} closeAuth={this.props.closeAuth} /> */}
+
+                {this.props.userSession ?
+                    <span className='greeting'>Welcome back {this.props.userSession.name}</span> :
+                    <div className='login'>
+                        <button onClick={this.props.openAuth}>
+                            <i class='fas fa-sign-in-alt'></i> Login
+                        </button>
+                    </div>
+                }
+
                 <input class='brand' type='email' placeholder='Untitled'
-                       style='width: 200px !important; color:black; margin-left: 5px; float:right'
-                       onChange={(e) => this.props.onFileChange((e.target as any).value)}/>
-                <input id='bmenub' type='checkbox' class='show'/>
-                <label for='bmenub' class='burger pseudo button icon-menu'/>
+                    style='width: 200px !important; color:black; margin-left: 5px; float:right'
+                    onChange={(e) => this.props.onFileChange((e.target as any).value)} />
+                <input id='bmenub' type='checkbox' class='show' />
+                <label for='bmenub' class='burger pseudo button icon-menu' />
 
 
                 <div class='menu'>
 
                     <a class='button icon-plus' title='Create new file' href='javascript:void(0)'
-                       onClick={() => this.props.newCode()}>
+                        onClick={() => this.props.newCode()}>
                         New
                     </a>
 
                     <a class='button icon-folder-open' title='Open a file' href='javascript:void(0)'
-                       onClick={() => this.props.openCode()}>
+                        onClick={() => this.props.openCode()}>
                         Open
                     </a>
 
                     <a class='button icon-floppy' title='Save a file' href='javascript:void(0)'
-                       onClick={() => this.props.saveCode()}>
+                        onClick={() => this.props.saveCode()}>
                         Save
                     </a>
 
                     {downloadHex &&
-                    <a class='button icon-flash' title='Download file to flash to micro:bit' href='javascript:void(0)'
-                       onClick={() => downloadHex()}>
-                        Download Hex
+                        <a class='button icon-flash' title='Download file to flash to micro:bit' href='javascript:void(0)'
+                            onClick={() => downloadHex()}>
+                            Download Hex
                     </a>
                     }
 
                     {downloadPython &&
-                    <a class='button icon-download' title='Download Python Source Code' href='javascript:void(0)'
-                       onClick={() => downloadPython()}>
-                        Download
+                        <a class='button icon-download' title='Download Python Source Code' href='javascript:void(0)'
+                            onClick={() => downloadPython()}>
+                            Download
                     </a>
                     }
 
@@ -94,26 +106,26 @@ export default class Nav extends Component<Props, {}> {
           </a>*/}
 
                     {openExtensions &&
-                    <a class='button icon-puzzle' title='Extensions' href='javascript:void(0)'
-                       onClick={() => openExtensions()}>
-                        Extensions
+                        <a class='button icon-puzzle' title='Extensions' href='javascript:void(0)'
+                            onClick={() => openExtensions()}>
+                            Extensions
                     </a>
                     }
 
                     <a class='button icon-book' title='Samples' href='javascript:void(0)'
-                       onClick={() => this.props.openSamples()}>
+                        onClick={() => this.props.openSamples()}>
                         Samples
                     </a>
 
                     <a class='button icon-cog' title='Settings' href='javascript:void(0)'
-                       onClick={() => this.props.onFunction()}>
+                        onClick={() => this.props.onFunction()}>
                         Settings
                     </a>
 
                     {sendCode &&
-                    <a class='button icon-play button-green' title='Run your code' href='javascript:void(0)'
-                       onClick={() => sendCode()}>
-                        Run
+                        <a class='button icon-play button-green' title='Run your code' href='javascript:void(0)'
+                            onClick={() => sendCode()}>
+                            Run
                     </a>
                     }
 

@@ -53,3 +53,14 @@ export interface PlatformInterface {
 }
 
 export type Capability = 'HexDownload' | 'RemoteShell' | 'TrinketShell' | 'HexFlash' | 'PythonDownload';
+
+export interface UserSession {
+  name: string;
+  token: string;
+}
+
+// declare global {
+//   interface Window {
+//     __sendUserSession: (userSession: UserSession) => void;
+//   }
+// }

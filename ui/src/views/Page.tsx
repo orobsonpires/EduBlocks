@@ -1,18 +1,19 @@
-import React = require('preact');
+import * as firebase from 'firebase/app';
+import * as React from 'preact';
 import { Component } from 'preact';
 import { getPlatform, getPlatformList } from '../platforms';
-import { App, Capability, Extension, Platform, PlatformInterface } from '../types';
-import * as firebase from 'firebase/app';
-import { AuthModal } from './Auth';
+import { App, Capability, Extension, Platform, PlatformInterface, UserSession } from '../types';
 import AlertModal from './AlertModal';
 import BlocklyView from './BlocklyView';
+import FirebaseSelectModal from './FirebaseSelectModal';
+import { openModal } from './helper';
 import ImageModal from './ImageModal';
+import { openLoginWindow } from './login';
 import Nav from './Nav';
 import OverModal from './OverwriteModal';
 import PythonView from './PythonView';
 import RemoteShellView from './RemoteShellView';
 import SelectModal, { SelectModalOption } from './SelectModal';
-import FirebaseSelectModal from './FirebaseSelectModal';
 import TrinketView from './TrinketView';
 
 type AdvancedFunction = 'Export Python' | 'Themes' | 'Flash Hex';
@@ -41,13 +42,13 @@ interface FileFirebaseSelectModalOption {
 interface State {
     platform?: PlatformInterface;
     viewMode: ViewMode;
-    modal: null | 'platform' | 'terminal' | 'samples' | 'themes' | 'extensions' | 'functions' | 'pythonOverwritten' | 'https' | 'noCode' | 'codeOverwrite' | 'progress' | 'auth' | 'error' | 'files';
-    prevModal: null | 'platform' | 'terminal' | 'samples' | 'themes' | 'extensions' | 'functions' | 'pythonOverwritten' | 'https' | 'noCode' | 'codeOverwrite' | 'progress' | 'auth' | 'error' | 'files';
+    modal: null | 'platform' | 'terminal' | 'samples' | 'themes' | 'extensions' | 'functions' | 'codeOverwrite' | 'progress' | 'auth' | 'error' | 'files';
     extensionsActive: Extension[];
     progress: number;
     doc: Readonly<DocumentState>;
     fileName: string;
     files: FileFirebaseSelectModalOption[];
+    userSession: UserSession | null;
 }
 
 export default class Page extends Component<Props, State> {
@@ -59,11 +60,11 @@ export default class Page extends Component<Props, State> {
         this.state = {
             viewMode: ViewModeBlockly,
             modal: 'platform',
-            prevModal: null,
             extensionsActive: [],
             progress: 0,
             fileName: 'Untitled',
             files: [],
+            userSession: null,
             doc: {
                 xml: null,
                 python: null,
@@ -88,7 +89,7 @@ export default class Page extends Component<Props, State> {
         this.switchView(ViewModeBlockly);
     }
 
-    private updateFromBlockly(xml: string, python: string) {
+    private async updateFromBlockly(xml: string, python: string) {
         if (
             this.state.doc.xml === xml &&
             this.state.doc.python === python
@@ -97,7 +98,10 @@ export default class Page extends Component<Props, State> {
         }
 
         if (this.state.doc.python !== python && !this.state.doc.pythonClean) {
-            this.setState({ modal: 'pythonOverwritten' });
+            await openModal(AlertModal, {
+                title: 'Attention!',
+                text: 'Python changes have been overwritten!',
+            });
         }
 
         const doc: DocumentState = {
@@ -167,9 +171,12 @@ export default class Page extends Component<Props, State> {
         }
     }
 
-    private openTerminal() {
+    private async openTerminal() {
         if (!this.state.doc.python) {
-            this.setState({ modal: 'noCode' });
+            await openModal(AlertModal, {
+                title: 'Attention!',
+                text: 'There is no code to run!',
+            });
 
             return;
         }
@@ -337,12 +344,26 @@ export default class Page extends Component<Props, State> {
 
 
     private closeModal() {
-        this.setState({ modal: this.state.prevModal, prevModal: null });
+        this.setState({ modal: null });
     }
 
 
-    private openAuth() {
-        this.setState({ modal: 'auth', prevModal: this.state.modal });
+    private async openAuth() {
+        // this.setState({ modal: 'auth', prevModal: this.state.modal });
+
+        // const user = await openModal(LoginModal, {});
+
+        // if (user) {
+        //     alert(user.name + '\n' + user.token);
+        // }
+
+        // window.__sendUserSession = (user: UserSession) => {
+        //     alert(user.name + '\n' + user.token);
+        // };
+
+        const userSession = await openLoginWindow();
+
+        this.setState({ userSession });
     }
 
 
@@ -492,19 +513,19 @@ export default class Page extends Component<Props, State> {
                     }}
                 />
 
-                <AuthModal
+                {/* <AuthModal
                     visible={this.state.modal === 'auth'}
                     onClose={() => this.closeModal()}
-                />
+                /> */}
 
-                <AlertModal
+                {/* <AlertModal
                     title='Attention!'
                     visible={this.state.modal === 'pythonOverwritten'}
                     text='Python changes have been overwritten!'
                     onCancel={() => {
                     }}
                     onButtonClick={(key) => key === 'close' && this.closeModal()}
-                />
+                /> */}
 
                 <OverModal
                     title='Attention!'
@@ -516,43 +537,40 @@ export default class Page extends Component<Props, State> {
                     onYes={(key1) => key1 === 'yes' && this.openPlatforms()}
                 />
 
-                <AlertModal
+                {/* <AlertModal
                     title='Attention!'
                     visible={this.state.modal === 'https'}
                     text='Need to switch to HTTPS...'
                     onCancel={() => {
                     }}
                     onButtonClick={(key) => key === 'close' && this.closeModal()}
-                />
+                /> */}
 
-                <AlertModal
+                {/* <AlertModal
                     title='Attention!'
                     visible={this.state.modal === 'noCode'}
                     text='There is no code to run!'
                     onCancel={() => {
                     }}
                     onButtonClick={(key) => key === 'close' && this.closeModal()}
-                />
+                /> */}
 
                 <AlertModal
                     title='Uh oh!'
                     visible={this.state.modal === 'error'}
                     text='Something went wrong'
-                    onCancel={() => {
-                    }}
-                    onButtonClick={(key) => key === 'close' && this.closeModal()}
+                    onClose={(key) => key === 'close' && this.closeModal()}
                 />
 
                 <AlertModal
                     title='Uploading...'
                     visible={this.state.modal === 'progress'}
                     text={`Uploading: ${(this.state.progress * 100) | 0}%`}
-                    onCancel={() => {
-                    }}
-                    onButtonClick={(key) => key === 'close' && this.closeModal()}
+                    onClose={(key) => key === 'close' && this.closeModal()}
                 />
 
                 <Nav
+                    userSession={this.state.userSession}
                     platformImg={this.state.platform && this.state.platform.image}
                     sync={this.state.doc.pythonClean}
                     openPlatforms={() => this.openPlatforms()}

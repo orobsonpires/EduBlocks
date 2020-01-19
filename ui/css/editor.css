@@ -27,6 +27,32 @@ body {
   vertical-align: middle;
 }
 
+img.close {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+}
+
+#VideoTutorialModal {
+  position: absolute;
+  z-index: 9;
+  left: 12%;
+  top: 10%;
+  background-color: #f1f1f1;
+  text-align: center;
+}
+
+#VideoTutorialModalheader {
+  padding: 5px;
+  cursor: move;
+  z-index: 10;
+  background-color: #396afc;
+  color: #fff;
+}
+
 
 .loading-message {
   font-size: 100px;

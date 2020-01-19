@@ -33,7 +33,7 @@ export interface TerminalInterface {
 }
 
 export type Extension = 'micro:bit General' | 'Pi General' | 'Web General' | 'CircuitPython General' | 'Calliope General' | 'scroll:bit' | 'enviro:bit' | 'GiggleBot' | 'EnviroBit' | 'Circuit Playground Easy';
-
+export type Videos = 'Getting Started';
 export type Platform = 'Python' | 'MicroBit' | 'RaspberryPi' | 'CircuitPython' | 'Calliope';
 
 export interface PlatformSelection {

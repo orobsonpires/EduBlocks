@@ -3,6 +3,7 @@ import { Component } from 'preact';
 import { getPlatform, getPlatformList } from '../platforms';
 import { App, Capability, Extension, Platform, PlatformInterface } from '../types';
 import AlertModal from './AlertModal';
+import VideoTutorialModal from './VideoTutorialModal';
 import BlocklyView from './BlocklyView';
 import ImageModal from './ImageModal';
 import Nav from './Nav';
@@ -14,6 +15,9 @@ import TrinketView from './TrinketView';
 
 type AdvancedFunction = 'Export Python' | 'Themes' | 'Flash Hex';
 const AdvancedFunctions: AdvancedFunction[] = ['Export Python', 'Themes'];
+
+type VideoTutorials = 'Getting Started';
+const VideoTutorials: VideoTutorials[] = ['Getting Started'];
 
 const ViewModeBlockly = 'blocks';
 const ViewModePython = 'python';
@@ -33,7 +37,8 @@ interface DocumentState {
 interface State {
   platform?: PlatformInterface;
   viewMode: ViewMode;
-  modal: null | 'platform' | 'terminal' | 'samples' | 'themes' | 'extensions' | 'functions' | 'pythonOverwritten' | 'https' | 'noCode' | 'codeOverwrite' | 'progress';
+  modal: null | 'platform' | 'terminal' | 'samples' | 'videos' | 'themes' | 'extensions' | 'functions' | 'pythonOverwritten' | 'https' | 'noCode' | 'codeOverwrite' | 'progress';
+  videoList: null | 'Getting Started';
   extensionsActive: Extension[];
   progress: number;
   doc: Readonly<DocumentState>;
@@ -49,6 +54,7 @@ export default class Page extends Component<Props, State> {
     this.state = {
       viewMode: ViewModeBlockly,
       modal: 'platform',
+      videoList: null,
       extensionsActive: [],
       progress: 0,
       fileName: "Untitled",
@@ -255,6 +261,9 @@ export default class Page extends Component<Props, State> {
     this.setState({ modal: null });
   }
 
+  private closeVideo() {
+    this.setState({ videoList: null });
+  }
 
   private openSamples() {
     this.setState({ modal: 'samples' });
@@ -332,6 +341,10 @@ export default class Page extends Component<Props, State> {
     this.setState({ modal: 'functions' });
   }
 
+  private openVideoTutorialsDialog() {
+    this.setState({ modal: 'videos' });
+  }
+
   private fileChange(fileName: string) {
     this.setState({fileName});
   }
@@ -353,6 +366,15 @@ export default class Page extends Component<Props, State> {
     }
 
     return advancedFunctions.map((func) => ({
+      label: func,
+      obj: func,
+    }));
+  }
+
+  private getVideoTutorialsList(): SelectModalOption[] {
+    let videoTutorials = VideoTutorials;
+
+    return videoTutorials.map((func) => ({
       label: func,
       obj: func,
     }));
@@ -386,6 +408,17 @@ export default class Page extends Component<Props, State> {
 
 
   }
+
+  private async loadVideoTutorial(func: VideoTutorials) {
+    if (func === 'Getting Started') {
+      let videoDiv = document.getElementById('VideoTutorialModal') as HTMLElement;
+      videoDiv.style.display = "block";
+      this.setState({ videoList: "Getting Started" });
+      await this.closeModal();
+    }
+  }
+
+
 
 
   public render() {
@@ -434,6 +467,14 @@ export default class Page extends Component<Props, State> {
           onButtonClick={(key) => key === 'close' && this.closeModal()}
         />
 
+        <VideoTutorialModal
+          title="Getting Started"
+          visible={this.state.videoList === 'Getting Started'}
+          videoLink="https://edublocks.org/videos/GettingStarted.mp4"
+          onCancel={() => { }}
+          onButtonClick={(key) => key === 'close' && this.closeVideo()}
+        />
+
         <AlertModal
           title='Uploading...'
           visible={this.state.modal === 'progress'}
@@ -457,6 +498,7 @@ export default class Page extends Component<Props, State> {
           openExtensions={this.getExtensions().length ? () => this.openExtensions() : undefined}
           openThemes={() => this.openThemes()}
           onFunction={() => this.openAdvancedFunctionDialog()}
+          onVideoTutorials={() => this.openVideoTutorialsDialog()}
           onFileChange={(fileName) => this.fileChange(fileName)}
         />
 
@@ -509,6 +551,7 @@ export default class Page extends Component<Props, State> {
           onSelect={(file) => this.selectSample(file.label)}
           onButtonClick={(key) => key === 'close' && this.closeModal()}
         />
+        
 
         <SelectModal
           title='Themes'
@@ -527,6 +570,16 @@ export default class Page extends Component<Props, State> {
           visible={this.state.modal === 'functions'}
           options={this.getAdvancedFunctionList()}
           onSelect={(func) => this.runAdvancedFunction(func.label as AdvancedFunction)}
+          onButtonClick={(key) => key === 'close' && this.closeModal()}
+        />
+
+        <SelectModal
+          title='Video Tutorials'
+          selectLabel='Go'
+          buttons={[]}
+          visible={this.state.modal === 'videos'}
+          options={this.getVideoTutorialsList()}
+          onSelect={(func) => this.loadVideoTutorial(func.label as VideoTutorials)}
           onButtonClick={(key) => key === 'close' && this.closeModal()}
         />
 

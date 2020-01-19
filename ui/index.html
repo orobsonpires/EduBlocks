@@ -39,7 +39,8 @@
   <link rel="icon" type="image/png" href="images/logo.png" />
   <link rel="stylesheet" href="lib/xterm.js/xterm.css" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js" type="text/javascript"></script>    
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js"></script>
   <script src="lib/es6-promise.min.js"></script>
   <script src="lib/xterm.js/xterm.js"></script>
   <script src="lib/xterm.js/addons/fit/fit.js"></script>
@@ -60,6 +61,7 @@
 
     <p class="loading-message">Loading...</p>
   </div>
+
 
   <!-- The main Blockly files -->
   <script src="blockly/blockly_compressed.js"></script>
@@ -82,7 +84,13 @@
     })();
   </script>
 
+  <script>
+    $( "#VideoTutorialModal" ).draggable({ containment: "#page", scroll: false });
 
+    $(".fa-times-circle").click( function(e){
+        $("#VideoTutorialModal").fadeOut();
+    } );
+  </script>
 </body>
 
 </html>

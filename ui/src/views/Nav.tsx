@@ -11,6 +11,7 @@ interface Props {
   downloadHex?(): void;
   downloadPython?(): void;
   onFunction(): void;
+  onVideoTutorials(): void;
   openPlatforms(): void;
   modeQuestion(): void;
 
@@ -80,6 +81,10 @@ export default class Nav extends Component<Props, {}> {
 
               <a class='button icon-book' title='Samples' href='javascript:void(0)' onClick={() => this.props.openSamples()}>
                 Samples
+          </a>
+
+          <a class='button icon-video' title='Video Tutorials' href='javascript:void(0)' onClick={() => this.props.onVideoTutorials()}>
+                Videos
           </a>
 
               <a class='button icon-cog' title="Settings" href='javascript:void(0)' onClick={() => this.props.onFunction()}>

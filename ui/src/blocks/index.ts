@@ -168,6 +168,15 @@ export async function getToolBoxXml(extensions: Extension[]) {
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'gigglebot', 'toolbox.xml'));
   }
 
+  //Automated Extensions under here
+  if (extensions.indexOf('uberbit') !== -1) {
+    (await import('./microbit/uberbit/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/uberbit/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'uberbit', 'toolbox.xml'));
+  }
+
+
+
   if (extensions.indexOf('Pi General') !== -1) {
     (await import('./pi/basic/definitions')).default(Blockly.Blocks);
     (await import('./pi/basic/generators')).default(Blockly.Python as any);

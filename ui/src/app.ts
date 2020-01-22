@@ -39,8 +39,11 @@ export function newApp(): App {
     newpy = newpy.replace('from gigglebot import *', '');
     newpy = newpy.replace('from scrollbit import *', '');
     newpy = newpy.replace('from envirobit import *', '');
-    newpy = newpy.replace('from iotloranode import loraNode', '');
+    //Automated Extensions under here
 
+    newpy = newpy.replace('from uberbit import *', '');
+
+    
     const combinedScript = (beforeScript ? (beforeScript + '\n\n') : '') + newpy;
 
     return combinedScript;

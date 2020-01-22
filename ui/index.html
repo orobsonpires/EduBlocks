@@ -89,6 +89,9 @@
 
     $(".fa-times-circle").click( function(e){
         $("#VideoTutorialModal").fadeOut();
+        $("video").each(function() {
+          $(this).get(0).pause();
+        });
     } );
   </script>
 </body>

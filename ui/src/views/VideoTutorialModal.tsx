@@ -28,7 +28,7 @@ export default class VideoTutorialModal<T extends VideoTutorialModalOption> exte
       <div id="VideoTutorialModal" style="display:none">
         <div id="VideoTutorialModalheader">
           <p style="text-align: left; width:49%; display: inline-block; margin: 0px !important;">{this.props.title}</p>
-          <p style="text-align: right; width:50%;  display: inline-block; margin: 0px !important;"><i class="fas fa-times-circle" style="pointer-events: none;"></i></p>
+          <p style="text-align: right; width:50%;  display: inline-block; margin: 0px !important;"><i class="fas fa-times-circle"></i></p>
         </div>
         <video width={445} height={245} controls>
           <source src={"https://edublocks.org/videos/" + this.props.title.replace(/\s/g, "") + ".mp4"} type="video/mp4"></source>

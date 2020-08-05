@@ -33,15 +33,7 @@ export default function define(Python: Blockly.BlockGenerators) {
         return code;
       };
 
-    Python['set_servo'] = function(block) {
-        var dropdown_servo = block.getFieldValue('servo');
-        var value_position = block.getFieldValue('position');
-        // TODO: Assemble Python into code variable.
-        var code = 'sets_servo_position('+dropdown_servo+', position='+value_position+' )\n';
-        return code;
-    };
-
-    Python['set_servo'] = function(block) {
+    Python['sets_servo'] = function(block) {
         var dropdown_servo = block.getFieldValue('servo');
         var value_position = Blockly.Python.valueToCode(block, 'position', Blockly.Python.ORDER_ATOMIC);
         // TODO: Assemble Python into code variable.

@@ -66,11 +66,7 @@ def i2cWrite(register,data):
 def init():
     global flag
     global oldPowerState
-    # brake_motor(M1)
-    # brake_motor(M2)
-    # disable_servo(S1)
-    # disable_servo(S2)
-    # disable_servo(S3)
+
 
     if flag == 0:
         oldPowerState = is_power_on()
@@ -78,6 +74,11 @@ def init():
 
     if is_power_on():
         if oldPowerState == False:
+            brake_motor(M1)
+            brake_motor(M2)
+            disable_servo(S1)
+            disable_servo(S2)
+            disable_servo(S3)
             reset()
         oldPowerState = True
     else:

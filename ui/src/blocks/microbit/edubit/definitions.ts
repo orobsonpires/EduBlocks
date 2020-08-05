@@ -72,7 +72,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
         }
       };
 
-      Blocks['set_servo'] = {
+      Blocks['sets_servo'] = {
         init: function() {
           this.appendDummyInput()
               .appendField("sets_servo_position(")

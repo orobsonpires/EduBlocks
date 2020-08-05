@@ -7,7 +7,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Imports edubit");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -19,7 +19,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Initialize the edu:bit");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -34,7 +34,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Brakes the motor");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
       Blocks['run_motor'] = {
@@ -54,7 +54,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Runs the motor");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
       Blocks['disable_servo'] = {
@@ -68,7 +68,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Disable the servo");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -87,7 +87,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Sets servo position");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
       Blocks['set_led'] = {
@@ -103,7 +103,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setNextStatement(true, null);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Sets traffic light bit");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -116,7 +116,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets sound level");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -129,7 +129,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets potentiometer level");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -142,7 +142,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets IR state");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -155,7 +155,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets IR state");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -168,7 +168,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets low battery status");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -181,7 +181,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets over voltage status");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 
@@ -194,7 +194,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
           this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
           this.setColour("#ff4800","#ff4800","#000000");
        this.setTooltip("Gets Vin");
-       this.setHelpUrl("");
+       this.setHelpUrl("https://github.com/Bhavithiran97/micropython-edubit");
         }
       };
 }

@@ -18,6 +18,14 @@ export default function define(Python: Blockly.BlockGenerators) {
     return code;
   };
 
+  Python['music_pin'] = function(block) {
+    var value_pin = Blockly.Python.valueToCode(block, 'pin', Blockly.Python.ORDER_ATOMIC);
+    // TODO: Assemble Python into code variable.
+    var code = 'pin = ' + value_pin;
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Python.ORDER_ATOMIC];
+  };
+
   Python['musicpitch'] = function (block) {
     var text_musicpitch = Blockly.Python.valueToCode(block, 'text', Blockly.Python.ORDER_ATOMIC)
     || '';
@@ -34,6 +42,13 @@ export default function define(Python: Blockly.BlockGenerators) {
   Python['musicstop'] = function(block) {
     // TODO: Assemble Python into code variable.
     const code = 'music.stop()\n';
+    return code;
+  };
+
+  Python['musicstop'] = function (block) {
+    var text_musicstop = Blockly.Python.valueToCode(block, 'text', Blockly.Python.ORDER_ATOMIC)
+    || '';
+    let code = 'music.stop(' + text_musicstop + ') \n';
     return code;
   };
 

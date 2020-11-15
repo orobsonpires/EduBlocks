@@ -83,6 +83,21 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     },
   };
 
+  Blocks['music_pin'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("pin = ");
+      this.appendValueInput("pin")
+          .setCheck(null);
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour("#E5BC16");
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+   this.setTooltip("Assign pin to music");
+   this.setHelpUrl("");
+    }
+  };
+
   Blocks['musicreset'] = {
     init: function() {
       this.appendDummyInput()
@@ -96,15 +111,19 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
   };
 
   Blocks['musicstop'] = {
-    init: function() {
+    init: function () {
       this.appendDummyInput()
-          .appendField("music.stop()");
+        .appendField('music.stop(')
+      this.appendValueInput("text")
+        .setCheck(null);
+      this.appendDummyInput()
+        .appendField(')');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("#E5BC16","#E5BC16","#a1882d");
-   this.setTooltip("Stop Music");
-   this.setHelpUrl("");
-    }
+      this.setTooltip('Stop music');
+      this.setHelpUrl('');
+    },
   };
 
   Blocks['musictempo'] = {

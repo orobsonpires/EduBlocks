@@ -10,6 +10,20 @@ export default function define(Python: Blockly.BlockGenerators) {
     return [code, Blockly.Python.ORDER_ATOMIC];
   };
 
+  Python['logotouched'] = function(block) {
+    // TODO: Assemble Python into code variable.
+    var code = 'pin_logo.is_touched()';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Python.ORDER_ATOMIC];
+  };
+
+  Python['pin_speaker'] = function(block) {
+    // TODO: Assemble Python into code variable.
+    var code = 'pin_speaker';
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Python.ORDER_ATOMIC];
+  };
+
   Python['analogreadnew'] = function(block) {
     var text_pinno = Blockly.Python.valueToCode(block, 'text', Blockly.Python.ORDER_ATOMIC)
     || 'True';

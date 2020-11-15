@@ -15,6 +15,31 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
    this.setHelpUrl("");
     }
   };
+
+  Blocks['logotouched'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("pin_logo.is_touched()")
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour("#E51616","#E51616","#a82f2f");
+   this.setTooltip("If logo pin is touched");
+   this.setHelpUrl("");
+    }
+  };
+
+  Blocks['pin_speaker'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("pin_speaker");
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour("#E51616");
+   this.setTooltip("Reference onboard speaker pin");
+   this.setHelpUrl("");
+    }
+  };
   
   Blocks['analogreadnew'] = {
     init: function() {

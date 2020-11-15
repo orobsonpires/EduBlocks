@@ -707,6 +707,10 @@ button{
     content: "\f200";
 }
 
+.blocklyTreeIconCustom.microphone::before {
+    content: "\f3c9";
+}
+
 .blocklyTreeIconCustom.random::before {
     content: "\f074";
 }

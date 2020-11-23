@@ -238,6 +238,21 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     },
   };
 
+  Blocks['comma'] = {
+    init: function() {
+      this.appendValueInput("in1")
+          .setCheck(null);
+      this.appendDummyInput()
+          .appendField(new Blockly.FieldDropdown([[",",","], ["+","+"]]), "commadd");
+      this.appendValueInput("in2")
+          .setCheck(null);
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour(maincolour);
+    }
+  };
+
   Blocks['importinputs'] = {
     init: function () {
       this.appendDummyInput()

@@ -88,6 +88,18 @@
       </shadow>
     </value>
   </block>
+  <block type="comma">
+    <value name="in1">
+      <shadow type="stringinline">
+        <field name="text">hello</field>
+      </shadow>
+    </value>
+    <value name="in2">
+      <shadow type="stringinline">
+        <field name="text">world</field>
+      </shadow>
+    </value>
+  </block>
 
   <label text="Logic" web-class="myLabelStyle"></label>
   <block type="internal">

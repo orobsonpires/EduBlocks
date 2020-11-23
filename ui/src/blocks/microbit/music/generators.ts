@@ -7,6 +7,34 @@ export default function define(Python: Blockly.BlockGenerators) {
     return code;
   };
 
+  Python['audioplay'] = function (block) {
+    var text_audioplay = Blockly.Python.valueToCode(block, 'text', Blockly.Python.ORDER_ATOMIC)
+    || '';
+    let code = 'audio.play(' + text_audioplay + ') \n';
+    return code;
+  };
+
+  Python['audio_options'] = function(block) {
+    var dropdown_options = block.getFieldValue('options');
+    var code = dropdown_options;
+    return [code, Blockly.Python.ORDER_ATOMIC];
+  };
+
+  Python['set_volume'] = function(block) {
+    var value_input = Blockly.Python.valueToCode(block, 'input', Blockly.Python.ORDER_ATOMIC);
+    // TODO: Assemble Python into code variable.
+    var code = 'set_volume(' +value_input+ ')\n';
+    return code;
+  };
+
+  Python['volumeslider'] = function(block) {
+    var text_text = block.getFieldValue('slider');
+    // TODO: Assemble Python into code variable.
+    var code = text_text;
+    // TODO: Change ORDER_NONE to the correct strength.
+    return [code, Blockly.Python.ORDER_ATOMIC];
+  };
+
   Python['songs'] = function(block) {
     var dropdown_songs = block.getFieldValue('songs');
     var code = dropdown_songs;
@@ -15,6 +43,11 @@ export default function define(Python: Blockly.BlockGenerators) {
 
   Python['musicimport'] = function (block) {
     let code = 'import music\n';
+    return code;
+  };
+
+  Python['audioimport'] = function (block) {
+    let code = 'import audio\n';
     return code;
   };
 

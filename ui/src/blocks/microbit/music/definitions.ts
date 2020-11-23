@@ -13,6 +13,18 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     },
   };
 
+  Blocks['audioimport'] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField('import audio')
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+      this.setTooltip('Import Audio');
+      this.setHelpUrl('');
+    },
+  };
+
   var musiclist = [
     ['music.DADADADUM', 'music.DADADADUM'],
     ['music.ENTERTAINER', 'music.ENTERTAINER'],
@@ -65,6 +77,64 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
       this.setTooltip('Play Music');
       this.setHelpUrl('');
     },
+  };
+
+  Blocks['audioplay'] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField('audio.play(')
+      this.appendValueInput("text")
+        .setCheck(null);
+      this.appendDummyInput()
+        .appendField(')');
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+      this.setTooltip('Play from Audio Library');
+      this.setHelpUrl('');
+    },
+  };
+
+  Blocks['audio_options'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField(new Blockly.FieldDropdown([["\"hello\"","\"hello\""], ["\"giggle\"","\"happy\""], ["\"mysterious\"","\"mysterious\""], ["\"sad\"","\"slide\""], ["\"soaring\"","\"soaring\""], ["\"spring\"","\"spring\""], ["\"twinkle\"","\"twinkle\""], ["\"yawn\"","\"yawn\""]]), "options");
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+   this.setTooltip("Sound expression options");
+   this.setHelpUrl("");
+    }
+  };
+
+  Blocks['set_volume'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("set_volume(");
+      this.appendValueInput("input")
+          .setCheck(null);
+      this.appendDummyInput()
+          .appendField(")");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+   this.setTooltip("Set the volume 0-255\t");
+   this.setHelpUrl("");
+    }
+  };
+
+  Blocks['volumeslider'] = {
+    init: function() {
+      this.appendDummyInput()
+        .appendField(new Blockly.FieldSlider("128", "0", "255", "1", "1", "Volume"), 'slider');
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour("#FFFFFF", "#FFFFFF", "#FFFFFF");
+      this.setTooltip("Slider input for inline input");
+      this.setHelpUrl("");
+    }
   };
 
   Blocks['musicpitch'] = {

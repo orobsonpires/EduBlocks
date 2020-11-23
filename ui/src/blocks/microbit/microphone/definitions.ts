@@ -54,6 +54,23 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     }
   };
 
+  Blocks['set_threshold'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("microphone.set_threshold(");
+      this.appendValueInput("input")
+          .setCheck(null);
+      this.appendDummyInput()
+          .appendField(")");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour('#008080');
+   this.setTooltip("Set threshold for sound 0-255\t");
+   this.setHelpUrl("");
+    }
+  };
+
   Blocks['microphone_getsounds'] = {
     init: function () {
       this.appendDummyInput()

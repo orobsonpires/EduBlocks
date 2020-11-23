@@ -1,5 +1,5 @@
 <category name="Microphone" colour="#008080" iconclass="blocklyTreeIconCustom microphone">
-<label text="Microphone" web-class="myLabelStyle"></label>
+<label text="Microphone (V2 Only)" web-class="myLabelStyle"></label>
   <block type="microphone_current"></block>
   <block type="microphone_sound"></block>
   <block type="microphone_level"></block>
@@ -11,4 +11,11 @@
     </value>
   </block>
   <block type="microphone_getsounds"></block>
+  <block type="set_threshold">
+    <value name="input">
+      <shadow type="textinline">
+        <field name="text"></field>
+      </shadow>
+    </value>
+  </block>
 </category>

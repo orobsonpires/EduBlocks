@@ -77,7 +77,7 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     init: function() {
       this.appendDummyInput()
           .appendField("pin")
-      this.appendValueInput("text")
+      this.appendValueInput("text") 
           .setCheck(null);
       this.appendDummyInput()
           .appendField(".write_analog(")

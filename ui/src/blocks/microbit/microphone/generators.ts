@@ -20,6 +20,13 @@ export default function define(Python: Blockly.BlockGenerators) {
     return [code, Blockly.Python.ORDER_ATOMIC];
   };
 
+  Python['set_threshold'] = function(block) {
+    var value_input = Blockly.Python.valueToCode(block, 'input', Blockly.Python.ORDER_ATOMIC);
+    // TODO: Assemble Python into code variable.
+    var code = 'microphone.set_threshold(' +value_input+ ')\n';
+    return code;
+  };
+
 
   Python['microphone_wassound'] = function(block) {
     var value_level = Blockly.Python.valueToCode(block, 'level', Blockly.Python.ORDER_ATOMIC);

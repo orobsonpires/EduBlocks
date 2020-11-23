@@ -22,7 +22,6 @@
       </shadow>
     </value>
   </block>
-  <block type="pin_speaker"></block>
   <block type="writeanalognew">
   <value name="text">
       <shadow type="textinline">
@@ -57,5 +56,8 @@
       </shadow>
     </value>
   </block>
+  <label text="V2 Only" web-class="myLabelStyle"></label>
+  <block type="pin_speaker"></block>
+  <block type="logotouched"></block>
 </category>
 

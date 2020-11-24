@@ -98,12 +98,12 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
   Blocks['audio_options'] = {
     init: function() {
       this.appendDummyInput()
-          .appendField(new Blockly.FieldDropdown([["\"hello\"","\"hello\""], ["\"giggle\"","\"happy\""], ["\"mysterious\"","\"mysterious\""], ["\"sad\"","\"slide\""], ["\"soaring\"","\"soaring\""], ["\"spring\"","\"spring\""], ["\"twinkle\"","\"twinkle\""], ["\"yawn\"","\"yawn\""]]), "options");
+        .appendField(new Blockly.FieldDropdown([["Sound.HAPPY","Sound.HAPPY"], ["Sound.GIGGLE","Sound.GIGGLE"], ["Sound.HELLO","Sound.HELLO"], ["Sound.MYSTERIOUS","Sound.MYSTERIOUS"], ["Sound.SAD","Sound.SAD"], ["Sound.SLIDE","Sound.SLIDE"], ["Sound.SOARING","Sound.SOARING"], ["Sound.SPRING","Sound.SPRING"], ["Sound.TWINKLE","Sound.TWINKLE"], ["Sound.YAWN","Sound.YAWN"]]), "options");
       this.setOutput(true, null);
       this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
       this.setColour("#E5BC16","#E5BC16","#a1882d");
    this.setTooltip("Sound expression options");
-   this.setHelpUrl("");
+   this.setHelpUrl(""); 
     }
   };
 

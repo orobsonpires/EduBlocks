@@ -2,7 +2,7 @@ import React = require('preact');
 import { Component } from 'preact';
 import { getPlatform, getPlatformList } from '../platforms';
 import { App, Capability, Extension, Platform, PlatformInterface } from '../types';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase';
 import { AuthModal } from './Auth';
 import AlertModal from './AlertModal';
 import IEModal from './IEModal';
@@ -27,8 +27,8 @@ import TrinketView from './TrinketView';
 type AdvancedFunction = 'Export Python' | 'Themes' | 'Flash Hex' | 'Extensions' | 'Switch Language' | 'Split View';
 let AdvancedFunctions: AdvancedFunction[] = ['Export Python', 'Themes', "Switch Language", "Split View"];
 
-type ShareOptions = 'Copy Shareable URL' | 'Copy Embed Code' | 'Share to Google Classroom' | 'Share to Microsoft Teams';
-let ShareOptions: ShareOptions[] = ['Copy Shareable URL', 'Copy Embed Code', 'Share to Google Classroom', 'Share to Microsoft Teams'];
+type ShareOptions = 'Copy Shareable URL' | 'Copy Embed Code' | 'Share to Google Classroom' | 'Share to Microsoft Teams' | 'Share to Public Gallery (BETA)';
+let ShareOptions: ShareOptions[] = ['Copy Shareable URL', 'Copy Embed Code', 'Share to Google Classroom', 'Share to Microsoft Teams', 'Share to Public Gallery (BETA)'];
 
 type Languages = 'English' | 'French' | 'German' | 'Welsh';
 const Languages: Languages[] = ['English', 'French', 'German', 'Welsh'];
@@ -66,6 +66,7 @@ interface State {
     shareURL: string;
     doc: Readonly<DocumentState>;
     fileName: string;
+    shareFileName: string;
     files: FileFirebaseSelectModalOption[];
 }
 
@@ -115,6 +116,7 @@ export default class Page extends Component<Props, State> {
             extensionsActive: [],
             progress: 0,
             shareURL: "",
+            shareFileName: "",
             fileName: 'Untitled',
             files: [],
             doc: {
@@ -456,6 +458,7 @@ export default class Page extends Component<Props, State> {
         const encoded = btoa(newFileURL);
         const edublocksLink = "https://app.edublocks.org/#share?" + filePlatform + "?" + encoded;
         await this.setState({ shareURL: edublocksLink});
+        await this.setState({ shareFileName: file.name});
         await console.log(this.state.shareURL);
         await this.setState({ modal: "shareoptions", prevModal: null});
     }
@@ -551,6 +554,54 @@ export default class Page extends Component<Props, State> {
 
             else{console.log(console.error());}
         }  
+        if (func === 'Share to Public Gallery (BETA)') {
+            let shareableURL = "https://api.shrtco.de/v2/shorten?url=" + encodeURIComponent(this.state.shareURL);
+            this.setState({ modal: "generating"});
+
+            let newFileName = "";
+            let platform = "";
+
+            if (this.state.shareFileName.indexOf("(Python)") !== -1 && this.state.platform!.key === "Python"){
+                newFileName = this.state.shareFileName.replace(" (Python)", "");
+                platform = "Python"
+                
+            }
+            if (this.state.shareFileName.indexOf("(RPi)") !== -1 && this.state.platform!.key === "RaspberryPi"){
+                newFileName = this.state.shareFileName.replace(" (RPi)", "");
+                platform = "RPi"
+                
+            }
+            if (this.state.shareFileName.indexOf("(microbit)") !== -1 && this.state.platform!.key === "MicroBit"){
+                newFileName = this.state.shareFileName.replace(" (microbit)", "");
+                platform = "microbit"
+                
+            }
+            if (this.state.shareFileName.indexOf("(CircuitPython)") !== -1 && this.state.platform!.key === "CircuitPython"){
+                newFileName = this.state.shareFileName.replace(" (CircuitPython)", "");
+                platform = "CircuitPython"
+            }
+
+            const response = await fetch(
+                shareableURL
+            );
+        
+            const body = await response.json();
+            
+            if (response.ok){
+                var db = firebase.firestore();
+            
+                db.collection("shared").add({ 
+                    name: newFileName,
+                    url: "https://share.edublocks.org/" + body.result.code,
+                    platform: platform
+                })
+
+                this.closeModal()
+                alert("Project live on https://projects.edublocks.org")
+            }
+
+            else{console.log(console.error());}
+        }
     }
 
     private async saveFile() {

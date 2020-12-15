@@ -1,10 +1,10 @@
 import { getBeforeScript } from './blocks/index';
 import { getIo } from './io';
-import { flashMicroBit } from './platforms/microbit/flash';
 import { newSamples } from './samples';
 import { newServerConnection, ServerConnection } from './server';
 import { App, Extension, TerminalInterface } from './types';
-import { getHexFile } from './lib/hexlify';
+
+/// <reference path="./lib/microbit.d.ts" />
 
 export function newApp(): App {
   let connection: ServerConnection | undefined;
@@ -40,6 +40,17 @@ export function newApp(): App {
     newpy = newpy.replace('from scrollbit import *', '');
     newpy = newpy.replace('from envirobit import *', '');
     newpy = newpy.replace('from iotloranode import loraNode', '');
+    //Automated Extensions under here
+
+    newpy = newpy.replace('from edubit import *', '');
+
+    newpy = newpy.replace('from DriveBit import *', '');
+
+    newpy = newpy.replace('from BitBotXL import *', '');
+
+    newpy = newpy.replace('from movemini import *', '');
+
+    newpy = newpy.replace('from Minibit import *', '');
 
     const combinedScript = (beforeScript ? (beforeScript + '\n\n') : '') + newpy;
 
@@ -53,21 +64,20 @@ export function newApp(): App {
   }
 
   async function flashHex(python: string, extensions: Extension[], onProgress: (progress: number) => void) {
-    const combinedScript = getCombinedScript(python, extensions);
 
     // const hex = getHexFile(combinedScript);
 
-    // await io.saveFile(hex, 'hex', 'application/octet-stream');
+    //await io.saveFile("jk", hex, 'hex', 'application/octet-stream');
 
-    await flashMicroBit(combinedScript, onProgress);
+    alert("Flash Hex Is Not Available. Use Download HEX Instead.")
   }
 
   async function saveHex(fileName: string, python: string, extensions: Extension[]) {
+
+
     const combinedScript = getCombinedScript(python, extensions);
 
-    const hex = getHexFile(combinedScript);
-
-    await io.saveFile(fileName, hex, 'hex', 'application/octet-stream');
+    await fsUniversalHex(combinedScript, 'microbit-' + fileName);
 
   }
 
@@ -95,13 +105,8 @@ export function newApp(): App {
   function getThemes() {
     return [
       'Default',
-      'Tangerine',
-      'Vivid',
-      'DarkRed',
-      'Celestial',
-      'Pacific',
       'Dark',
-      'Solarized',
+      'Light'
     ];
   }
 

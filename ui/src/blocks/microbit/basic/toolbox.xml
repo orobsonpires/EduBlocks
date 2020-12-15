@@ -1,4 +1,4 @@
-<category name="Basic" colour="#ff0066">
+<category name="Basic" colour="#ff0066" iconclass="blocklyTreeIconCustom basic">
 
   <label text="Imports" web-class="myLabelStyle"></label>
 
@@ -85,6 +85,18 @@
     <value name="bool">
       <shadow type="textinline">
         <field name="text">1</field>
+      </shadow>
+    </value>
+  </block>
+  <block type="comma">
+    <value name="in1">
+      <shadow type="stringinline">
+        <field name="text">hello</field>
+      </shadow>
+    </value>
+    <value name="in2">
+      <shadow type="stringinline">
+        <field name="text">world</field>
       </shadow>
     </value>
   </block>

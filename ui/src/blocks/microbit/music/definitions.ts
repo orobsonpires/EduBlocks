@@ -13,6 +13,18 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     },
   };
 
+  Blocks['audioimport'] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField('import audio')
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+      this.setTooltip('Import Audio');
+      this.setHelpUrl('');
+    },
+  };
+
   var musiclist = [
     ['music.DADADADUM', 'music.DADADADUM'],
     ['music.ENTERTAINER', 'music.ENTERTAINER'],
@@ -67,6 +79,64 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     },
   };
 
+  Blocks['audioplay'] = {
+    init: function () {
+      this.appendDummyInput()
+        .appendField('audio.play(')
+      this.appendValueInput("text")
+        .setCheck(null);
+      this.appendDummyInput()
+        .appendField(')');
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+      this.setTooltip('Play from Audio Library');
+      this.setHelpUrl('');
+    },
+  };
+
+  Blocks['audio_options'] = {
+    init: function() {
+      this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["Sound.HAPPY","Sound.HAPPY"], ["Sound.GIGGLE","Sound.GIGGLE"], ["Sound.HELLO","Sound.HELLO"], ["Sound.MYSTERIOUS","Sound.MYSTERIOUS"], ["Sound.SAD","Sound.SAD"], ["Sound.SLIDE","Sound.SLIDE"], ["Sound.SOARING","Sound.SOARING"], ["Sound.SPRING","Sound.SPRING"], ["Sound.TWINKLE","Sound.TWINKLE"], ["Sound.YAWN","Sound.YAWN"]]), "options");
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+   this.setTooltip("Sound expression options");
+   this.setHelpUrl(""); 
+    }
+  };
+
+  Blocks['set_volume'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("set_volume(");
+      this.appendValueInput("input")
+          .setCheck(null);
+      this.appendDummyInput()
+          .appendField(")");
+      this.setInputsInline(true);
+      this.setPreviousStatement(true, null);
+      this.setNextStatement(true, null);
+      this.setColour("#E5BC16","#E5BC16","#a1882d");
+   this.setTooltip("Set the volume 0-255\t");
+   this.setHelpUrl("");
+    }
+  };
+
+  Blocks['volumeslider'] = {
+    init: function() {
+      this.appendDummyInput()
+        .appendField(new Blockly.FieldSlider("128", "0", "255", "1", "1", "Volume"), 'slider');
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+      this.setColour("#FFFFFF", "#FFFFFF", "#FFFFFF");
+      this.setTooltip("Slider input for inline input");
+      this.setHelpUrl("");
+    }
+  };
+
   Blocks['musicpitch'] = {
     init: function () {
       this.appendDummyInput()
@@ -83,6 +153,21 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
     },
   };
 
+  Blocks['music_pin'] = {
+    init: function() {
+      this.appendDummyInput()
+          .appendField("pin = ");
+      this.appendValueInput("pin")
+          .setCheck(null);
+      this.setInputsInline(true);
+      this.setOutput(true, null);
+      this.setColour("#E5BC16");
+      this.setOutputShape(Blockly.OUTPUT_SHAPE_ROUND);
+   this.setTooltip("Assign pin to music");
+   this.setHelpUrl("");
+    }
+  };
+
   Blocks['musicreset'] = {
     init: function() {
       this.appendDummyInput()
@@ -96,15 +181,19 @@ export default function define(Blocks: Blockly.BlockDefinitions) {
   };
 
   Blocks['musicstop'] = {
-    init: function() {
+    init: function () {
       this.appendDummyInput()
-          .appendField("music.stop()");
+        .appendField('music.stop(')
+      this.appendValueInput("text")
+        .setCheck(null);
+      this.appendDummyInput()
+        .appendField(')');
       this.setPreviousStatement(true, null);
       this.setNextStatement(true, null);
       this.setColour("#E5BC16","#E5BC16","#a1882d");
-   this.setTooltip("Stop Music");
-   this.setHelpUrl("");
-    }
+      this.setTooltip('Stop music');
+      this.setHelpUrl('');
+    },
   };
 
   Blocks['musictempo'] = {

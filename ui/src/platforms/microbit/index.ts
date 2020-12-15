@@ -10,8 +10,20 @@ export function newMicrobitPlatform(): PlatformInterface {
       'micro:bit General',
     ],
     extensions: [
-      'scroll:bit',
+      'scrollbit',
       'GiggleBot',
+      //Automated Extensions under here
+
+      'edubit',
+
+      'DriveBit',
+
+      'BitBotXL',
+
+      'MoveMini',
+
+      'Minibit',
+      
     ],
   };
 }

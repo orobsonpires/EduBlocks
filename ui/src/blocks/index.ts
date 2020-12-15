@@ -102,9 +102,7 @@ export async function getToolBoxXml(extensions: Extension[]) {
     (await import('./circuitpython/advanced/definitions')).default(Blockly.Blocks);
     (await import('./circuitpython/advanced/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'circuitpython', 'advanced', 'toolbox.xml'));
-  }
 
-  if (extensions.indexOf('Circuit Playground Easy') !== -1) {
     (await import('./circuitpython/cpx/definitions')).default(Blockly.Blocks);
     (await import('./circuitpython/cpx/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'circuitpython', 'cpx', 'toolbox.xml'));
@@ -147,6 +145,10 @@ export async function getToolBoxXml(extensions: Extension[]) {
     (await import('./microbit/music/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'music', 'toolbox.xml'));
 
+    (await import('./microbit/microphone/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/microphone/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'microphone', 'toolbox.xml'));
+
     (await import('./microbit/neopixel/definitions')).default(Blockly.Blocks);
     (await import('./microbit/neopixel/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'neopixel', 'toolbox.xml'));
@@ -156,7 +158,7 @@ export async function getToolBoxXml(extensions: Extension[]) {
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'pins', 'toolbox.xml'));
   }
 
-  if (extensions.indexOf('scroll:bit') !== -1) {
+  if (extensions.indexOf('scrollbit') !== -1) {
     (await import('./microbit/scrollbit/definitions')).default(Blockly.Blocks);
     (await import('./microbit/scrollbit/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'scrollbit', 'toolbox.xml'));
@@ -166,6 +168,33 @@ export async function getToolBoxXml(extensions: Extension[]) {
     (await import('./microbit/gigglebot/definitions')).default(Blockly.Blocks);
     (await import('./microbit/gigglebot/generators')).default(Blockly.Python as any);
     toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'gigglebot', 'toolbox.xml'));
+  }
+
+  //Automated Extensions under here
+  if (extensions.indexOf('edubit') !== -1) {
+    (await import('./microbit/edubit/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/edubit/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'edubit', 'toolbox.xml'));
+  }
+  if (extensions.indexOf('DriveBit') !== -1) {
+    (await import('./microbit/DriveBit/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/DriveBit/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'DriveBit', 'toolbox.xml'));
+  }
+  if (extensions.indexOf('BitBotXL') !== -1) {
+    (await import('./microbit/BitBotXL/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/BitBotXL/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'BitBotXL', 'toolbox.xml'));
+  }
+  if (extensions.indexOf('MoveMini') !== -1) {
+    (await import('./microbit/MoveMini/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/MoveMini/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'MoveMini', 'toolbox.xml'));
+  }
+  if (extensions.indexOf('Minibit') !== -1) {
+    (await import('./microbit/Minibit/definitions')).default(Blockly.Blocks);
+    (await import('./microbit/Minibit/generators')).default(Blockly.Python as any);
+    toolBoxXml += fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'Minibit', 'toolbox.xml'));
   }
 
   if (extensions.indexOf('Pi General') !== -1) {
@@ -220,13 +249,26 @@ export async function getToolBoxXml(extensions: Extension[]) {
 }
 
 export function getBeforeScript(extensions: Extension[]) {
-  if (extensions.indexOf('scroll:bit') !== -1) {
+  if (extensions.indexOf('scrollbit') !== -1) {
     return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'scrollbit', 'scrollbit.py'));
   }
   if (extensions.indexOf('GiggleBot') !== -1) {
     return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'gigglebot', 'gigglebot.py'));
   }
-  if (extensions.indexOf('Circuit Playground Easy') !== -1) {
-    return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'circuitpython', 'cpx', 'cpx.py'));
+  if (extensions.indexOf('Minibit') !== -1) {
+    return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'Minibit', 'Minibit.py'));
+  }
+  //Automated Scripts under here
+  if (extensions.indexOf('edubit') !== -1) {
+    return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'edubit', 'edubit.py')); 
+  }
+  if (extensions.indexOf('DriveBit') !== -1) {
+    return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'DriveBit', 'DriveBit.py')); 
+  }
+  if (extensions.indexOf('BitBotXL') !== -1) {
+    return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'BitBotXL', 'BitBotXL.py')); 
+  }
+  if (extensions.indexOf('MoveMini') !== -1) {
+    return fs.readFileSync(path.join(__dirname, '..', '..', 'src', 'blocks', 'microbit', 'MoveMini', 'MoveMini.py')); 
   }
 }
